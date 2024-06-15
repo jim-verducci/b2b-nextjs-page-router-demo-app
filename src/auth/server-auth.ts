@@ -29,10 +29,10 @@ import { WristbandError } from '@/error';
 
 export function serverRedirectToLogin(req: IncomingMessage) {
   const { headers, url } = req;
-  const returnUrl = `http://${headers.host}${url}`;
+  const returnUrl = `https://${headers.host}${url}`;
   return {
     redirect: {
-      destination: `http://${headers.host}/api/auth/login?return_url=${returnUrl}`,
+      destination: `https://${headers.host}/api/auth/login?return_url=${returnUrl}`,
       permanent: false,
     },
   };
@@ -100,7 +100,7 @@ export async function callback(req: NextApiRequest, res: NextApiResponse): Promi
   const appLoginUrl: string = APPLICATION_LOGIN_URL;
   const tenantSubdomain: string = !IS_LOCALHOST ? parseTenantSubdomain(req, INVOTASTIC_HOST) : '';
   let tenantLoginUrl: string =
-    !IS_LOCALHOST && !!tenantSubdomain ? `http://${tenantSubdomain}${INVOTASTIC_HOST}/api/auth/login` : '';
+    !IS_LOCALHOST && !!tenantSubdomain ? `https://${tenantSubdomain}${INVOTASTIC_HOST}/api/auth/login` : '';
 
   // Make sure the login state cookie exists, extract it, and set it to be cleared by the server.
   const loginStateCookie: string = getAndClearLoginStateCookie(req, res);
@@ -119,13 +119,13 @@ export async function callback(req: NextApiRequest, res: NextApiResponse): Promi
     return;
   }
   if (!IS_LOCALHOST && tenantSubdomain !== tenantDomainName) {
-    res.redirect(`http://${tenantDomainName}.${INVOTASTIC_HOST}/api/auth/login`);
+    res.redirect(`https://${tenantDomainName}.${INVOTASTIC_HOST}/api/auth/login`);
     return;
   }
 
   tenantLoginUrl = !IS_LOCALHOST
     ? tenantLoginUrl
-    : `http://${INVOTASTIC_HOST}/api/auth/login?tenant_domain=${tenantDomainName}`;
+    : `https://${INVOTASTIC_HOST}/api/auth/login?tenant_domain=${tenantDomainName}`;
 
   // Check for any potential error conditions
   if (paramState !== cookieState) {

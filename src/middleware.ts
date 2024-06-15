@@ -11,8 +11,8 @@ export async function middleware(req: NextRequest) {
   const { headers, nextUrl } = req;
   const host = headers.get('host');
   const { pathname } = nextUrl;
-  const returnUrl = `http://${host}${pathname}`;
-  const loginUrl = `http://${host}/api/auth/login?return_url=${returnUrl}`;
+  const returnUrl = `https://${host}${pathname}`;
+  const loginUrl = `https://${host}/api/auth/login?return_url=${returnUrl}`;
 
   // Path matching here is crude -- replace with whatever matching algorithm your app needs.
   const isProtectedPage: boolean = pathname === '/settings';

@@ -28,7 +28,7 @@ export default async function handleCallback(req: NextApiRequest, res: NextApiRe
 
       // Send the user back to the Invotastic application.
       const tenantDomain = IS_LOCALHOST ? '' : `${callbackData.tenantDomainName}.`;
-      res.redirect(callbackData.returnUrl || `http://${tenantDomain}${INVOTASTIC_HOST}`);
+      res.redirect(callbackData.returnUrl || `https://${tenantDomain}${INVOTASTIC_HOST}`);
     }
   } catch (error: unknown) {
     console.error(error);
