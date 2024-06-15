@@ -20,6 +20,7 @@ function base64URLEncode(str: string): string {
 
 export function parseTenantSubdomain(req: NextApiRequest, rootDomain: string): string {
   const { host } = req.headers;
+  console.log('HOST: ', host, host!.substring(host!.indexOf('.') + 1));
   return host!.substring(host!.indexOf('.') + 1) === rootDomain ? host!.substring(0, host!.indexOf('.')) : '';
 }
 
