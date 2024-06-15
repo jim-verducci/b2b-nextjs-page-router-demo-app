@@ -1,5 +1,5 @@
 export const IS_LOCALHOST: boolean = process.env.DOMAIN_FORMAT === 'LOCALHOST';
-export const INVOTASTIC_HOST: string = IS_LOCALHOST ? 'localhost:6001' : 'business.invotastic.com:6001';
+export const INVOTASTIC_HOST: string = IS_LOCALHOST ? 'localhost:6001' : 'business.invotastic.xyz:6001';
 const authCallbackTenantDomain = IS_LOCALHOST ? '' : '{tenant_domain}.';
 
 export const APPLICATION_LOGIN_URL: string = `https://${process.env.APPLICATION_DOMAIN}/login`;

@@ -10,10 +10,10 @@
   },
   "scripts": {
     "dev": "next dev -p 6001",
-    "dev-vanity-domain": "next dev -p 6001 -H business.invotastic.com",
+    "dev-vanity-domain": "next dev -p 6001 -H business.invotastic.xyz",
     "build": "next build",
     "start": "next start -p 6001",
-    "start-vanity-domain": "next start -p 6001 -H business.invotastic.com",
+    "start-vanity-domain": "next start -p 6001 -H business.invotastic.xyz",
     "lint": "next lint"
   },
   "dependencies": {
