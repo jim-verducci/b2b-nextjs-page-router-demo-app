@@ -25,6 +25,7 @@ export function parseTenantSubdomain(req: NextApiRequest, rootDomain: string): s
 
 export function resolveTenantDomain(req: NextApiRequest, useTenantSubdomains: boolean, rootDomain: string): string {
   if (useTenantSubdomains) {
+    console.log('PARSE SUBDOMAIN', rootDomain);
     return parseTenantSubdomain(req, rootDomain);
   }
 

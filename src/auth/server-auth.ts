@@ -45,7 +45,9 @@ export async function login(req: NextApiRequest, res: NextApiResponse, config: L
   // Make sure a valid tenantDomainName exists for multi-tenant apps.
   let tenantDomainName: string = '';
   tenantDomainName = resolveTenantDomain(req, !IS_LOCALHOST, INVOTASTIC_HOST);
+  console.log('TENANT_DOMAIN_NAME: ', tenantDomainName);
   if (!tenantDomainName) {
+    console.log('Application login redirect: ', APPLICATION_LOGIN_URL);
     res.redirect(APPLICATION_LOGIN_URL);
     return;
   }
@@ -71,6 +73,7 @@ export async function login(req: NextApiRequest, res: NextApiResponse, config: L
   });
 
   // Perform the redirect to Wristband's Authorize Endpoint.
+  console.log('AUTHORIZE_URL: ', authorizeUrl);
   res.redirect(authorizeUrl);
   return;
 }
